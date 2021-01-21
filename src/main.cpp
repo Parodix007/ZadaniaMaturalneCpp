@@ -1,7 +1,6 @@
 #include<iostream>
-#include<string>
+#include<cstdlib>
 #include<vector>
-
 using namespace std;
 
 // Algorytm na liczbe pierwsza
@@ -59,6 +58,28 @@ void wzorceTekst() {
 	}
 }
 
+// Algorytm na szyfrowanie szyfrem cezara
+string szyfrCezara(int liczba_przesuniec) {
+	string wyraz = "INTERPRETOWANIE";
+	// cout << "Podaj wyraz" << endl;
+	// cin >> wyraz;
+
+	string zaszyfrowany_wyraz;
+
+	int miejsce_w_afabe = liczba_przesuniec % 26;
+	cout << miejsce_w_afabe << endl;
+
+	for (int i = 0; i < wyraz.size(); i++) {
+		char nowa_litera;
+		if (wyraz[i] + miejsce_w_afabe > 90) {
+			nowa_litera = (wyraz[i] + miejsce_w_afabe) - 26;
+		} else {
+			nowa_litera = wyraz[i] + miejsce_w_afabe;
+		}
+		zaszyfrowany_wyraz.push_back(nowa_litera);
+	}
+	return zaszyfrowany_wyraz;
+}
 int main(){
 	// cout << "Podaj liczbe calkowita: ";
 	// int liczba;
@@ -70,7 +91,9 @@ int main(){
 
 	// rozkladNaCzynnikiPierwsze(liczba);  Wypisze wartosci ktore sa czynnikami pierwszymi podanej liczby
 
-	wzorceTekst();
+	//wzorceTekst();
+
+	cout << szyfrCezara(107) << endl;
 
 	return 0;
 }
